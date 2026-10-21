@@ -1,0 +1,7 @@
+{
+  "name": "mf-presupuestos",
+  "version": "1.0.0",
+  "description": "Armador de presupuestos de MF Construcciones",
+  "private": true,
+  "license": "MIT"
+}

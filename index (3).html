@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MF Construcciones · Presupuestos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f4f6;--card:#fff;--ink:#141821;--mut:#6b7280;--line:#e4e7ec;--pri:#f59e0b;--priink:#1c1300;--dark:#1b2230;--wa:#16a34a;--inp:#f9fafb;--chip:#fff4d6;--chipink:#7a4b00;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0e121a;--card:#171c27;--ink:#eef1f6;--mut:#9aa3b2;--line:#283042;--inp:#1e2432;--dark:#0a0d13;--chip:#3a2d0c;--chipink:#fcd38a;color-scheme:dark}}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+header{background:var(--dark);color:#fff;border-bottom:4px solid var(--pri);padding-top:env(safe-area-inset-top,0)}
+header div{max-width:1200px;margin:auto;padding:16px 20px;display:flex;align-items:center;gap:14px}
+.logo{width:44px;height:44px;border-radius:10px;background:var(--pri);color:var(--priink);display:grid;place-items:center;font-weight:800;font-size:18px}
+header h1{margin:0;font-size:20px}header p{margin:0;color:#aab3c2;font-size:13px}
+.wrap{max-width:1200px;margin:auto;padding:20px;display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:14px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.card h2{margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:10px}
+.card h2 i{font-style:normal;background:var(--pri);color:var(--priink);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}
+.g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.full{grid-column:1/-1}
+@media(max-width:600px){.g{grid-template-columns:1fr}}
+label{display:block;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:4px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--inp);border:1px solid var(--line);border-radius:10px;padding:10px 11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(245,158,11,.25)}
+textarea{resize:vertical;min-height:80px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 10px}
+.chip{border:1px solid transparent;background:var(--chip);color:var(--chipink);padding:6px 11px;border-radius:99px;font:600 12px Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--pri);color:var(--priink)}
+.chip.p{background:var(--inp);color:var(--ink);border-color:var(--line)}.chip.p:hover{border-color:var(--pri)}
+.hd,.row{display:grid;grid-template-columns:2.6fr .9fr .9fr 1.2fr 1.3fr 34px;gap:8px;align-items:center}
+.hd{font-size:11px;font-weight:700;color:var(--mut);text-transform:uppercase;padding:14px 2px 6px}
+.row{padding:8px 0;border-top:1px solid var(--line)}
+.sub{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}.sub small{display:block;font-weight:500;font-size:11px;color:var(--mut)}
+.x{border:0;background:none;color:#dc2626;font-size:22px;cursor:pointer;border-radius:8px}
+.c::before{display:none}
+@media(max-width:760px){.hd{display:none}.row{grid-template-columns:1fr 1fr;padding:12px 0}.row .d{grid-column:1/-1}.c::before{display:block;content:attr(data-l);font-size:11px;font-weight:600;color:var(--mut);margin-bottom:3px}.sub{text-align:left}.x{justify-self:end;grid-column:2}}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border:0;border-radius:12px;font:700 15px Inter,sans-serif;cursor:pointer;margin-top:10px}
+.pri{background:var(--pri);color:var(--priink)}.wa{background:var(--wa);color:#fff}.ghost{background:var(--inp);color:var(--ink);border:1px solid var(--line)}
+.add{width:auto;display:inline-flex;padding:9px 14px;margin:12px 0 0;font-size:13px}
+aside{position:sticky;top:12px}@media(max-width:900px){aside{position:static}}
+.tl{display:flex;justify-content:space-between;padding:4px 0;font-size:14px;color:var(--mut)}.tl b{color:var(--ink)}
+.sw{display:flex;gap:8px;margin-bottom:12px}.sw button{flex:1;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--inp);color:var(--ink);font:600 13px Inter,sans-serif;cursor:pointer}.sw .on{background:var(--pri);color:var(--priink);border-color:var(--pri)}
+.mini{max-height:240px;overflow:auto;margin-bottom:8px}
+.ml{display:flex;justify-content:space-between;gap:10px;padding:5px 0;font-size:13px;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
+.ml span:first-child{color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tot{background:var(--dark);color:#fff;border-radius:12px;padding:14px;margin:10px 0}
+.tot small{color:#aab3c2;display:block}.tot strong{font-size:30px;font-weight:800;color:var(--pri);font-variant-numeric:tabular-nums}
+.prev{white-space:pre-wrap;background:var(--inp);border:1px solid var(--line);border-left:4px solid var(--wa);border-radius:10px;padding:12px;font-size:14px;margin-top:10px}
+.hint{font-size:12px;color:var(--mut);margin:6px 0 0}
+details summary{cursor:pointer;font-weight:700;font-size:16px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--dark);color:#fff;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0));display:none;align-items:center;gap:10px;z-index:8;border-top:3px solid var(--pri)}
+.bar b{flex:1;font-size:20px;color:var(--pri)}.bar small{display:block;font-size:11px;color:#aab3c2;font-weight:500}
+.bar button{border:0;border-radius:10px;padding:11px 14px;font:700 14px Inter,sans-serif}
+@media(max-width:900px){.bar{display:flex}}
+@media(min-width:901px){body{padding-bottom:20px}}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--dark);color:#fff;padding:11px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:9;max-width:90vw;text-align:center}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<header><div><span class="logo">MF</span><span><h1 id="hn">MF Construcciones</h1><p>Armador de presupuestos</p></span></div></header>
+<div class="wrap">
+<main>
+ <div class="card"><details><summary>⚙️ Datos de mi empresa (se guardan solos)</summary>
+  <div class="g" style="margin-top:14px">
+   <div><label>Nombre de la empresa</label><input data-k="emp.nombre"></div>
+   <div><label>Propietario / responsable</label><input data-k="emp.contacto" placeholder="Nombre y apellido"></div>
+   <div><label>Teléfono</label><input data-k="emp.tel" placeholder="Ej: 3537 55-1234"></div>
+   <div><label>Email</label><input data-k="emp.mail" type="email"></div>
+   <div><label>CUIT</label><input data-k="emp.cuit"></div>
+   <div><label>Dirección</label><input data-k="emp.dir"></div>
+  </div><p class="hint">Aparecen en el encabezado del PDF y en el mensaje de WhatsApp.</p></details></div>
+
+ <div class="card"><h2><i>1</i>Datos del cliente</h2>
+  <div class="g">
+   <div><label>Nombre del cliente</label><input data-k="cliente" placeholder="Ej: Juan Pérez"></div>
+   <div><label>WhatsApp del cliente</label><input data-k="tel" inputmode="tel" placeholder="Código de área sin 0 ni 15"></div>
+   <div class="full"><label>Obra / trabajo</label><input data-k="obra" placeholder="Ej: Ampliación de vivienda – 2 habitaciones"></div>
+   <div class="full"><label>Dirección de la obra</label><input data-k="dir"></div>
+   <div><label>N° de presupuesto</label><input data-k="num" data-n type="number" min="1"></div>
+   <div><label>Fecha</label><input data-k="fecha" type="date"></div>
+  </div></div>
+
+ <div class="card"><h2><i>2</i>Mano de obra (trabajos)</h2>
+  <label>Agregar rápido: elegí un rubro y tocá el trabajo</label>
+  <div class="chips" id="rub"></div><div class="chips" id="pre"></div>
+  <p class="hint">También podés escribir cualquier concepto a mano. Medida × precio por unidad = subtotal (ej: REVOQUE GRUESO · 10 m² × $1.000 = $10.000).</p>
+  <div class="hd"><span>Concepto</span><span>Medida</span><span>Unidad</span><span>Precio por unidad</span><span style="text-align:right">Subtotal</span><span></span></div>
+  <div id="list"></div>
+  <button class="btn ghost add" id="addb">＋ Agregar otro concepto</button>
+  <datalist id="dl"></datalist><datalist id="dlm"></datalist></div>
+
+ <div class="card"><h2><i>3</i>Materiales</h2>
+  <div class="sw"><button id="mNo">A cargo del cliente</button><button id="mSi">Los incluyo en el presupuesto</button></div>
+  <div id="mbox">
+   <label>Agregar rápido</label><div class="chips" id="mpre"></div>
+   <div class="hd"><span>Material</span><span>Cantidad</span><span>Unidad</span><span>Precio por unidad</span><span style="text-align:right">Subtotal</span><span></span></div>
+   <div id="mlist"></div>
+   <button class="btn ghost add" id="maddb">＋ Agregar otro material</button>
+  </div>
+  <p class="hint" id="mhint">Los materiales no se suman al total y en el PDF figura “Materiales a cargo del cliente”.</p></div>
+
+ <div class="card"><h2><i>4</i>Condiciones</h2>
+  <div class="g"><div><label>Validez (días)</label><input data-k="validez" data-n type="number" min="1"></div>
+   <div><label>Plazo de obra</label><input data-k="plazo" placeholder="Ej: 45 días hábiles"></div>
+  <div class="full"><label>Forma de pago</label><textarea data-k="pago"></textarea></div>
+  <div class="full"><label>Observaciones</label><textarea data-k="obs" style="min-height:130px"></textarea></div></div></div>
+
+ <div class="card"><h2><i>5</i>Mensaje de WhatsApp</h2>
+  <label>Texto (editable; lo que va entre llaves se completa solo)</label>
+  <textarea data-k="msg" style="min-height:260px"></textarea>
+  <p class="hint">Variables: {cliente} {numero} {obra} {total} {plazo} {validez} {contacto} {empresa} {materiales}</p>
+  <label style="margin-top:12px">Así lo recibe el cliente</label><div class="prev" id="prev"></div></div>
+</main>
+
+<aside><div class="card">
+  <h2>🧮 Cálculo en vivo</h2>
+  <div class="mini" id="mini"></div><div class="tl"><span>Mano de obra</span><b id="sT"></b></div><div class="tl" id="sMw"><span>Materiales</span><b id="sM"></b></div>
+  <div class="tot"><small>TOTAL</small><strong id="rt"></strong></div>
+  <button class="btn pri" id="pdfb">⬇ Descargar PDF</button>
+  <button class="btn wa" id="wab">💬 Enviar por WhatsApp</button>
+  <p class="hint">Descarga el PDF y abre el chat del cliente con el mensaje listo. Solo queda adjuntar el PDF y enviar.</p>
+  <button class="btn ghost" id="cpb">Copiar mensaje</button>
+  <button class="btn ghost" id="newb">Nuevo presupuesto</button>
+</div></aside>
+</div>
+<div class="bar"><b><small>TOTAL</small><span id="bt"></span></b><button style="background:var(--pri);color:var(--priink)" id="bp">⬇ PDF</button><button style="background:var(--wa);color:#fff" id="bw">💬 WhatsApp</button></div>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),KEY='mf_presupuesto_v2';
+const fmt=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n||0).replace(/\u00a0/g,' ');
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const UN=['m²','m³','ml','u','gl','hs','día','kg','bolsa','viaje','jornal'];
+const PRE={
+'Demolición':[['Demolición de mampostería','m²'],['Demolición de contrapiso','m²'],['Retiro de escombros','viaje']],
+'Movimiento de suelo':[['Excavación y nivelación','m³'],['Excavación de zanjas','ml'],['Relleno y compactación','m³']],
+'Cimientos y hormigón':[['Cimientos / zapatas','ml'],['Platea de hormigón','m²'],['Contrapiso','m²'],['Columnas de hormigón','ml'],['Vigas de encadenado','ml'],['Losa','m²']],
+'Albañilería':[['Mampostería de ladrillo hueco','m²'],['Mampostería de ladrillo común','m²'],['Mampostería de bloques','m²'],['Dinteles','u']],
+'Revoques':[['Revoque grueso','m²'],['Revoque fino','m²'],['Revoque grueso y fino','m²'],['Jaharro y enlucido','m²'],['Azotado hidrófugo','m²']],
+'Pisos y revestimientos':[['Colocación de pisos cerámicos','m²'],['Colocación de porcelanato','m²'],['Colocación de revestimiento','m²'],['Carpeta niveladora','m²'],['Zócalos','ml']],
+'Techos':[['Estructura de techo','m²'],['Cubierta de chapa','m²'],['Cubierta de teja','m²'],['Membrana y aislación','m²'],['Canaletas y desagües','ml']],
+'Cielorrasos':[['Cielorraso de yeso (durlock)','m²'],['Cielorraso aplicado','m²']],
+'Electricidad':[['Instalación eléctrica completa','gl'],['Boca de luz','u'],['Tomacorriente','u'],['Tablero eléctrico','u']],
+'Plomería y gas':[['Instalación sanitaria','gl'],['Instalación de gas','gl'],['Colocación de artefactos','u'],['Cámara séptica / pozo','u']],
+'Pintura':[['Pintura interior (2 manos)','m²'],['Pintura exterior','m²'],['Pintura de cielorraso','m²'],['Enduido y lijado','m²']],
+'Aberturas y herrería':[['Colocación de aberturas','u'],['Reja','u'],['Portón','u'],['Baranda / escalera','ml']],
+'Mano de obra y extras':[['Mano de obra oficial','jornal'],['Mano de obra ayudante','jornal'],['Alquiler de andamios','día'],['Limpieza final de obra','gl'],['Flete de materiales','viaje']]};
+const MSG=`Hola {cliente}, ¿cómo estás? 👋
+Te escribimos de *{empresa}*.
+
+Te enviamos el presupuesto N° {numero} correspondiente a: {obra}.
+
+💰 Total: {total}
+⏱ Plazo estimado: {plazo}
+📅 Válido por {validez} días
+
+En el PDF adjunto está el detalle completo de rubros, cantidades y precios. Cualquier duda o ajuste que quieras hacer, avisanos y lo vemos sin compromiso.
+
+Saludos,
+{contacto}
+{empresa}`;
+const PAGO='50% de anticipo para el inicio de la obra y el saldo contra avance de obra / entrega final. Efectivo o transferencia bancaria.';
+const OBS=`• Los precios corresponden únicamente a los trabajos detallados.
+• Todo trabajo adicional o modificación solicitada durante la obra se presupuestará por separado.
+• Los materiales no detallados en este presupuesto quedan a cargo del cliente.
+• El cliente debe garantizar el libre acceso a la obra y los servicios de agua y electricidad.
+• Los plazos pueden variar por condiciones climáticas o demoras ajenas a la empresa.
+• Pasada la fecha de validez, los precios están sujetos a actualización.`;
+const MAT=[['Cemento (bolsa 50 kg)','bolsa'],['Cal (bolsa)','bolsa'],['Arena','m³'],['Piedra / canto rodado','m³'],['Ladrillo hueco','u'],['Ladrillo común','u'],['Bloques de hormigón','u'],['Hierro del 8','kg'],['Hierro del 10','kg'],['Hormigón elaborado H21','m³'],['Pegamento cementicio','bolsa'],['Cerámicos / porcelanato','m²'],['Membrana','m²'],['Chapas / tejas','m²'],['Pintura (lata)','u'],['Cables y cañerías','gl'],['Aberturas','u'],['Materiales varios','gl']];
+const today=()=>new Date().toISOString().slice(0,10),blank=()=>({id:Math.random(),desc:'',unit:'m²',qty:0,price:0});
+const DEF=()=>({num:1,fecha:today(),validez:15,cliente:'',tel:'',obra:'',dir:'',items:[blank()],mats:[],incluyeMat:false,plazo:'A coordinar',pago:PAGO,obs:OBS,msg:MSG,emp:{nombre:'MF Construcciones',contacto:'',tel:'',mail:'',cuit:'',dir:''}});
+let S=DEF(),rub='';
+try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(o)S={...S,...o,emp:{...S.emp,...(o.emp||{})}}}catch(e){}
+if(!S.items.length)S.items=[blank()];
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2800)};
+const getp=k=>k.split('.').reduce((a,p)=>a[p],S),setp=(k,v)=>{const p=k.split('.'),l=p.pop();p.reduce((a,q)=>a[q],S)[l]=v};
+const sum=k=>S[k].reduce((a,i)=>a+i.qty*i.price,0),total=()=>sum('items')+(S.incluyeMat?sum('mats'):0),emp=()=>S.emp.nombre||'MF Construcciones';
+const det=i=>i.qty&&i.price?i.qty+' '+i.unit+' × '+fmt(i.price)+' / '+i.unit:'';
+const numStr=()=>String(S.num).padStart(4,'0'),dmy=s=>s?s.split('-').reverse().join('/'):'';
+function msgText(){const v={cliente:S.cliente,numero:numStr(),obra:S.obra||'tu obra',total:fmt(total()),validez:S.validez,plazo:S.plazo||'a coordinar',contacto:S.emp.contacto,empresa:emp(),materiales:S.incluyeMat?'incluye materiales':'materiales a cargo del cliente'};
+ return S.msg.replace(/\{(\w+)\}/g,(m,k)=>k in v?v[k]:m).replace(/Hola ,/,'Hola,').replace(/\n{3,}/g,'\n\n').trim()}
+function waNum(t){let d=(t||'').replace(/\D/g,'').replace(/^00/,'').replace(/^0/,'');if(d.startsWith('54')){if(d.length===12)d='549'+d.slice(2);return d.length>=12?d:''}
+ const m=d.match(/^(\d{2,4})15(\d{6,8})$/);if(m&&m[1].length+m[2].length===10)d=m[1]+m[2];return d.length===10?'549'+d:''}
+function update(){const t=fmt(total());$('#rt').textContent=$('#bt').textContent=t;$('#hn').textContent=emp();$('#prev').textContent=msgText();
+ $('#sT').textContent=fmt(sum('items'));$('#sM').textContent=fmt(sum('mats'));$('#sMw').style.display=S.incluyeMat?'flex':'none';
+ const row=(i,p)=>`<div class="ml"><span>${p}${esc(i.desc||'Sin nombre')} (${i.qty} ${i.unit})</span><b>${fmt(i.qty*i.price)}</b></div>`;
+ const l=S.items.filter(i=>i.qty*i.price>0).map(i=>row(i,'')).concat(S.incluyeMat?S.mats.filter(i=>i.qty*i.price>0).map(i=>row(i,'🧱 ')):[]);
+ $('#mini').innerHTML=l.length?l.join(''):'<p class="hint">Cargá medida y precio y se suma acá.</p>'}
+const LST={items:'#list',mats:'#mlist'};
+function renderList(k){$(LST[k]).innerHTML=S[k].map((it,i)=>`<div class="row" data-s="${k}" data-i="${i}">
+ <div class="c d" data-l="Concepto"><input list="${k==='items'?'dl':'dlm'}" data-f="desc" value="${esc(it.desc)}" placeholder="${k==='items'?'Ej: REVOQUE GRUESO':'Ej: CEMENTO'}"></div>
+ <div class="c" data-l="Medida"><input type="number" min="0" step="any" inputmode="decimal" data-f="qty" value="${it.qty||''}" placeholder="0"></div>
+ <div class="c" data-l="Unidad"><select data-f="unit">${UN.map(u=>`<option${u===it.unit?' selected':''}>${u}</option>`).join('')}</select></div>
+ <div class="c" data-l="Precio por unidad ($)"><input type="number" min="0" step="any" inputmode="decimal" data-f="price" value="${it.price||''}" placeholder="0"></div>
+ <div class="c sub" data-l="Subtotal"><span id="s${k}${i}">${fmt(it.qty*it.price)}</span><small id="t${k}${i}">${det(it)}</small></div>
+ <button class="x" data-del="${i}" title="Quitar">×</button></div>`).join('')}
+function renderChips(){$('#rub').innerHTML=Object.keys(PRE).map(r=>`<button class="chip${r===rub?' on':''}" data-r="${r}">${r}</button>`).join('');
+ $('#pre').innerHTML=rub?PRE[rub].map((p,i)=>`<button class="chip p" data-p="${i}">＋ ${p[0]}</button>`).join(''):''}
+$('#mpre').innerHTML=MAT.map((p,i)=>`<button class="chip p" data-m="${i}">＋ ${p[0]}</button>`).join('');
+$('#dl').innerHTML=[...new Set(Object.values(PRE).flat().map(p=>p[0].toUpperCase()))].map(n=>`<option value="${n}">`).join('');
+$('#dlm').innerHTML=MAT.map(p=>`<option value="${p[0].toUpperCase()}">`).join('');
+function addPreset(k,p){const last=S[k][S[k].length-1];
+ if(last&&!last.desc&&!last.qty&&!last.price){last.desc=p[0].toUpperCase();last.unit=p[1]}else S[k].push({...blank(),desc:p[0].toUpperCase(),unit:p[1]});
+ renderList(k);update();save();const r=document.querySelectorAll(LST[k]+' .row');r[r.length-1].querySelector('[data-f=qty]').focus()}
+function addRow(k){S[k].push(blank());renderList(k);update();save();document.querySelector(LST[k]+' .row:last-child input').focus()}
+function matUI(){$('#mSi').classList.toggle('on',S.incluyeMat);$('#mNo').classList.toggle('on',!S.incluyeMat);$('#mbox').style.display=S.incluyeMat?'block':'none';
+ $('#mhint').style.display=S.incluyeMat?'none':'block'}
+function setMat(v){S.incluyeMat=v;if(v&&!S.mats.length)S.mats.push(blank());renderList('mats');matUI();update();save()}
+$('#mNo').onclick=()=>setMat(false);$('#mSi').onclick=()=>setMat(true);
+$('#rub').onclick=e=>{const r=e.target.dataset.r;if(r){rub=rub===r?'':r;renderChips()}};
+$('#pre').onclick=e=>{const b=e.target.closest('[data-p]');if(b)addPreset('items',PRE[rub][b.dataset.p])};
+$('#mpre').onclick=e=>{const b=e.target.closest('[data-m]');if(b)addPreset('mats',MAT[b.dataset.m])};
+['items','mats'].forEach(k=>{const L=$(LST[k]);
+ L.addEventListener('input',e=>{const r=e.target.closest('.row');if(!r)return;const i=+r.dataset.i,it=S[k][i],f=e.target.dataset.f;
+  it[f]=(f==='qty'||f==='price')?(parseFloat(e.target.value)||0):e.target.value;$('#s'+k+i).textContent=fmt(it.qty*it.price);$('#t'+k+i).textContent=det(it);update();save()});
+ L.addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(b){S[k].splice(+b.dataset.del,1);if(!S[k].length&&k==='items')S[k]=[blank()];renderList(k);update();save()}})});
+$('#addb').onclick=()=>addRow('items');$('#maddb').onclick=()=>addRow('mats');
+const bind=()=>document.querySelectorAll('[data-k]').forEach(el=>{el.value=getp(el.dataset.k)??''});
+document.addEventListener('input',e=>{const k=e.target.dataset?.k;if(!k)return;setp(k,'n' in e.target.dataset?(parseFloat(e.target.value)||0):e.target.value);update();save()});
+$('#cpb').onclick=async()=>{try{await navigator.clipboard.writeText(msgText());toast('Mensaje copiado')}catch(e){toast('No se pudo copiar')}};
+let armed=0;$('#newb').onclick=function(){if(!armed){armed=1;this.textContent='¿Seguro? Tocá de nuevo para borrar';setTimeout(()=>{armed=0;this.textContent='Nuevo presupuesto'},3500);return}
+ armed=0;this.textContent='Nuevo presupuesto';const o=S;S={...DEF(),num:o.num+1,emp:o.emp,msg:o.msg,pago:o.pago,obs:o.obs,validez:o.validez};bind();renderList('items');renderList('mats');matUI();update();save();toast('Presupuesto nuevo listo')};
+
+function makePDF(){
+ if(!(total()>0)){toast('Cargá al menos un concepto con medida y precio');return null}
+ if(!window.jspdf){toast('No cargó el generador de PDF. Revisá tu conexión.');return null}
+ const {jsPDF}=window.jspdf,doc=new jsPDF({unit:'mm',format:'a4'}),W=210,M=14,e=S.emp;
+ doc.setFillColor(27,34,48);doc.rect(0,0,W,38,'F');doc.setFillColor(245,158,11);doc.rect(0,38,W,2.5,'F');
+ doc.setTextColor(255);doc.setFont('helvetica','bold');doc.setFontSize(21);doc.text(emp().toUpperCase(),M,16);
+ doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(190,198,210);
+ [e.contacto&&'Responsable: '+e.contacto,e.cuit&&'CUIT: '+e.cuit,e.dir,[e.tel,e.mail].filter(Boolean).join('  |  ')].filter(Boolean).slice(0,4).forEach((t,i)=>doc.text(t,M,22+i*4.2));
+ doc.setTextColor(245,158,11);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('PRESUPUESTO',W-M,15,{align:'right'});
+ doc.setTextColor(255);doc.setFontSize(10);doc.text('N° '+numStr(),W-M,22,{align:'right'});
+ doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(190,198,210);
+ doc.text('Fecha: '+dmy(S.fecha),W-M,27.5,{align:'right'});doc.text('Validez: '+S.validez+' días',W-M,32,{align:'right'});
+ let y=50;doc.setTextColor(120,128,140);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('PARA',M,y);doc.text('OBRA',W/2,y);
+ doc.setTextColor(20,24,33);doc.setFontSize(11);doc.text(S.cliente||'-',M,y+5.5);
+ doc.setFont('helvetica','normal');doc.setFontSize(9);const ol=doc.splitTextToSize(S.obra||'-',W/2-M);doc.text(ol,W/2,y+5.5);
+ if(S.dir)doc.text(doc.splitTextToSize(S.dir,W/2-M),W/2,y+6+ol.length*4);
+ let sy=y+22;
+ const tabla=(tit,k)=>{const body=S[k].filter(i=>i.desc||i.qty||i.price).map(i=>[(i.desc||'-').toUpperCase(),String(i.qty).replace('.',',')+' '+i.unit,fmt(i.price)+' / '+i.unit,fmt(i.qty*i.price)]);if(!body.length)return;
+  doc.autoTable({startY:sy,head:[[tit,'Medida','Precio por unidad','Subtotal']],body,foot:[['','','Subtotal '+tit.toLowerCase(),fmt(sum(k))]],showFoot:'lastPage',theme:'striped',margin:{left:M,right:M},
+   styles:{fontSize:9,cellPadding:2.4,textColor:[30,34,44]},headStyles:{fillColor:[27,34,48],textColor:255},footStyles:{fillColor:[255,244,214],textColor:[28,19,0],fontStyle:'bold'},
+   columnStyles:{1:{halign:'right',cellWidth:28},2:{halign:'right',cellWidth:40},3:{halign:'right',cellWidth:34,fontStyle:'bold'}}});sy=doc.lastAutoTable.finalY+6};
+ tabla('Mano de obra','items');
+ if(S.incluyeMat)tabla('Materiales','mats');else{doc.setFont('helvetica','italic');doc.setFontSize(9);doc.setTextColor(90,96,108);doc.text('Materiales: a cargo del cliente.',M,sy+1);sy+=8}
+ const rows=S.incluyeMat?[['Mano de obra',fmt(sum('items'))],['Materiales',fmt(sum('mats'))],['TOTAL',fmt(total())]]:[['TOTAL',fmt(total())]];
+ doc.autoTable({startY:sy-2,body:rows,theme:'plain',margin:{left:W-M-95,right:M},styles:{fontSize:9.5,cellPadding:2},columnStyles:{0:{cellWidth:55},1:{halign:'right',fontStyle:'bold'}},
+  didParseCell:d=>{if(d.row.index===rows.length-1){d.cell.styles.fillColor=[245,158,11];d.cell.styles.textColor=[28,19,0];d.cell.styles.fontSize=12;d.cell.styles.fontStyle='bold'}}});
+ y=doc.lastAutoTable.finalY+8;
+ const block=(t,x)=>{const L=doc.splitTextToSize(x,W-2*M);if(y+8+L.length*4.2>275){doc.addPage();y=18}
+  doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(122,75,0);doc.text(t.toUpperCase(),M,y);doc.setFont('helvetica','normal');doc.setTextColor(50,55,66);doc.text(L,M,y+5);y+=8+L.length*4.2};
+ if(S.pago)block('Forma de pago',S.pago);if(S.plazo)block('Plazo de obra',S.plazo);if(S.obs)block('Observaciones',S.obs);
+ block('Validez','Este presupuesto es válido hasta el '+dmy(new Date(new Date(S.fecha+'T12:00:00').getTime()+S.validez*864e5).toISOString().slice(0,10))+'.');
+ if(y>240){doc.addPage();y=18}y=Math.max(y+14,255);doc.setDrawColor(150);doc.line(M,y,M+65,y);doc.line(W-M-65,y,W-M,y);
+ doc.setFontSize(8);doc.setTextColor(110);doc.text(emp()+(e.contacto?' - '+e.contacto:''),M,y+4);doc.text('Conformidad del cliente',W-M-65,y+4);
+ const n=doc.getNumberOfPages();for(let i=1;i<=n;i++){doc.setPage(i);doc.setFontSize(8);doc.setTextColor(140);doc.text(emp()+' · Presupuesto N° '+numStr()+' · Página '+i+' de '+n,W/2,289,{align:'center'})}
+ return doc}
+const fname=()=>'Presupuesto-'+numStr()+(S.cliente?'-'+S.cliente.replace(/[^\w]+/g,'_'):'')+'.pdf';
+function dl(){const d=makePDF();if(d){d.save(fname());toast('PDF descargado ✔');return true}}
+function wsp(){const n=waNum(S.tel);if(!n){toast('Ingresá el WhatsApp del cliente (código de área + número)');return}
+ const d=makePDF();if(!d)return;d.save(fname());
+ window.open('https://wa.me/'+n+'?text='+encodeURIComponent(msgText()),'_blank');toast('Adjuntá el PDF descargado en el chat y enviá')}
+$('#pdfb').onclick=$('#bp').onclick=dl;$('#wab').onclick=$('#bw').onclick=wsp;
+bind();renderChips();renderList('items');renderList('mats');matUI();update();
+</script>
+</body>
+</html>
