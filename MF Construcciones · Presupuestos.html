@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MF Construcciones · Presupuestos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f4f6;--card:#fff;--ink:#141821;--mut:#6b7280;--line:#e4e7ec;--pri:#f59e0b;--priink:#1c1300;--dark:#1b2230;--wa:#16a34a;--inp:#f9fafb;--chip:#fff4d6;--chipink:#7a4b00;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e121a;--card:#171c27;--ink:#eef1f6;--mut:#9aa3b2;--line:#283042;--inp:#1e2432;--dark:#0a0d13;--chip:#3a2d0c;--chipink:#fcd38a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e121a;--card:#171c27;--ink:#eef1f6;--mut:#9aa3b2;--line:#283042;--inp:#1e2432;--dark:#0a0d13;--chip:#3a2d0c;--chipink:#fcd38a;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--dark);color:#fff;border-bottom:4px solid var(--pri)}
+header div{max-width:1200px;margin:auto;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.logo{width:44px;height:44px;border-radius:10px;background:var(--pri);color:var(--priink);display:grid;place-items:center;font-weight:800;font-size:18px}
+header h1{margin:0;font-size:20px;letter-spacing:.3px}header p{margin:0;color:#aab3c2;font-size:13px}
+.wrap{max-width:1200px;margin:auto;padding:20px;display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:14px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.card h2{margin:0 0 14px;font-size:16px;display:flex;align-items:center;gap:10px}
+.card h2 i{font-style:normal;background:var(--pri);color:var(--priink);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}
+.g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:600px){.g,.g3{grid-template-columns:1fr}}
+label{display:block;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:4px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--inp);border:1px solid var(--line);border-radius:10px;padding:10px 11px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(245,158,11,.25)}
+textarea{resize:vertical;min-height:80px}.full{grid-column:1/-1}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.chip{border:0;background:var(--chip);color:var(--chipink);padding:6px 11px;border-radius:99px;font:600 12px Inter,sans-serif;cursor:pointer}
+.chip:hover{filter:brightness(.95)}
+.hd,.row{display:grid;grid-template-columns:2.6fr .9fr .9fr 1.2fr 1.3fr 34px;gap:8px;align-items:center}.sub small{display:block;font-weight:500;font-size:11px;color:var(--mut)}
+.hd{font-size:11px;font-weight:700;color:var(--mut);text-transform:uppercase;padding:0 2px 6px}
+.row{padding:8px 0;border-top:1px solid var(--line)}
+.sub{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.x{border:0;background:none;color:#dc2626;font-size:22px;cursor:pointer;border-radius:8px}.x:hover{background:rgba(220,38,38,.1)}
+.c::before{display:none}
+@media(max-width:760px){.hd{display:none}.row{grid-template-columns:1fr 1fr;padding:12px 0}.row .d{grid-column:1/-1}.c::before{display:block;content:attr(data-l);font-size:11px;font-weight:600;color:var(--mut);margin-bottom:3px}.sub{text-align:left}.x{justify-self:end;grid-column:2}}
+.empty{padding:22px;text-align:center;color:var(--mut);border:1px dashed var(--line);border-radius:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border:0;border-radius:12px;font:700 15px Inter,sans-serif;cursor:pointer;text-decoration:none;margin-top:10px}
+.pri{background:var(--pri);color:var(--priink)}.wa{background:var(--wa);color:#fff}.ghost{background:var(--inp);color:var(--ink);border:1px solid var(--line)}
+.btn.off{opacity:.55}.add{width:auto;display:inline-flex;padding:9px 14px;margin:12px 0 0;font-size:13px}
+aside{position:sticky;top:12px}@media(max-width:900px){aside{position:static}}
+.tl{display:flex;justify-content:space-between;padding:6px 0;color:var(--mut);font-variant-numeric:tabular-nums}.tl b{color:var(--ink)}
+.tot{background:var(--dark);color:#fff;border-radius:12px;padding:14px;margin:10px 0}
+.tot small{color:#aab3c2;display:block}.tot strong{font-size:28px;font-weight:800;color:var(--pri);font-variant-numeric:tabular-nums}
+.prev{white-space:pre-wrap;background:var(--inp);border:1px solid var(--line);border-left:4px solid var(--wa);border-radius:10px;padding:12px;font-size:14px;margin-top:10px}
+.hint{font-size:12px;color:var(--mut);margin:6px 0 0}
+details summary{cursor:pointer;font-weight:700;font-size:16px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--dark);color:#fff;padding:11px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:9;max-width:90vw;text-align:center}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<header><div><span class="logo">MF</span><span><h1>MF Construcciones</h1><p>Armador de presupuestos</p></span></div></header>
+<div class="wrap">
+<main>
+ <div class="card"><details><summary>⚙️ Datos de mi empresa (se guardan solos)</summary>
+  <div class="g" style="margin-top:14px">
+   <div><label>Responsable / firma</label><input data-k="emp.contacto" placeholder="Nombre y apellido"></div>
+   <div><label>Teléfono</label><input data-k="emp.tel" placeholder="Ej: 3537 55-1234"></div>
+   <div><label>Email</label><input data-k="emp.mail" type="email"></div>
+   <div><label>CUIT</label><input data-k="emp.cuit"></div>
+   <div class="full"><label>Dirección</label><input data-k="emp.dir"></div>
+  </div></details></div>
+
+ <div class="card"><h2><i>1</i>Datos del cliente</h2>
+  <div class="g">
+   <div><label>Nombre del cliente</label><input data-k="cliente" placeholder="Ej: Juan Pérez"></div>
+   <div><label>WhatsApp del cliente</label><input data-k="tel" inputmode="tel" placeholder="Código de área sin 0 ni 15"></div>
+   <div class="full"><label>Obra / trabajo</label><input data-k="obra" placeholder="Ej: Ampliación de vivienda – 2 habitaciones"></div>
+   <div class="full"><label>Dirección de la obra</label><input data-k="dir"></div>
+   <div><label>N° de presupuesto</label><input data-k="num" data-n type="number" min="1"></div>
+   <div><label>Fecha</label><input data-k="fecha" type="date"></div>
+  </div></div>
+
+ <div class="card"><h2><i>2</i>Conceptos del presupuesto</h2>
+  <p class="hint" style="margin:-6px 0 12px">Escribí el concepto, la medida y el precio por unidad. Ej: REVOQUE GRUESO · 10 m² · $1.000 por m² = $10.000</p>
+  <div class="hd"><span>Concepto</span><span>Medida</span><span>Unidad</span><span>Precio por unidad</span><span style="text-align:right">Subtotal</span><span></span></div>
+  <div id="list"></div>
+  <button class="btn ghost add" id="addb">＋ Agregar otro concepto</button>
+  <datalist id="rubros"></datalist>
+ </div>
+
+ <div class="card"><h2><i>3</i>Condiciones</h2>
+  <div class="g"><div><label>Validez (días)</label><input data-k="validez" data-n type="number" min="1"></div>
+   <div><label>Plazo de obra</label><input data-k="plazo" placeholder="Ej: 45 días hábiles"></div>
+  <div class="full"><label>Forma de pago</label><textarea data-k="pago"></textarea></div>
+  <div class="full"><label>Observaciones</label><textarea data-k="obs"></textarea></div></div></div>
+
+ <div class="card"><h2><i>4</i>Mensaje de WhatsApp</h2>
+  <label>Texto (podés editarlo; las palabras entre llaves se completan solas)</label>
+  <textarea data-k="msg" style="min-height:190px"></textarea>
+  <p class="hint">Variables: {cliente} {numero} {obra} {total} {validez} {plazo} {contacto}</p>
+  <label style="margin-top:12px">Así lo va a recibir el cliente</label><div class="prev" id="prev"></div></div>
+</main>
+
+<aside><div class="card">
+  <h2>Resumen</h2>
+  <div class="tot"><small>TOTAL</small><strong id="r-tot"></strong></div>
+  <button class="btn pri" id="pdfb">⬇ Descargar PDF</button>
+  <a class="btn wa" id="wab" target="_blank" rel="noopener">💬 Enviar por WhatsApp</a>
+  <p class="hint">1) Descargá el PDF · 2) Tocá WhatsApp: se abre el chat con el mensaje listo · 3) Adjuntá el PDF y enviá.</p>
+  <button class="btn ghost" id="cpb">Copiar mensaje</button>
+  <button class="btn ghost" id="newb">Nuevo presupuesto</button>
+</div></aside>
+</div>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script>
+const $=s=>document.querySelector(s), KEY='mf_presupuesto_v1';
+const fmt=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS'}).format(n||0).replace(/\u00a0/g,' ');
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const UN=['m²','m³','ml','u','gl','hs','día','kg','bolsa','viaje','jornal'];
+const RUB=['Demolición','Movimiento de suelo','Albañilería','Hormigón','Revoques','Pisos y revestimientos','Techos','Electricidad','Plomería y gas','Pintura','Carpintería','Herrería','Mano de obra','Materiales','Alquiler de equipos','Flete y volquetes','Otros'];
+const PRE=[['Demolición','Demolición de mampostería','m²'],['Movimiento de suelo','Excavación y nivelación','m³'],['Hormigón','Platea / contrapiso de hormigón','m²'],['Hormigón','Hormigón elaborado H21','m³'],['Albañilería','Mampostería de ladrillo hueco','m²'],['Albañilería','Mampostería de ladrillo común','m²'],['Revoques','Revoque grueso y fino','m²'],['Pisos y revestimientos','Colocación de pisos cerámicos','m²'],['Pisos y revestimientos','Colocación de revestimiento','m²'],['Techos','Estructura y cubierta de techo','m²'],['Electricidad','Instalación eléctrica completa','gl'],['Electricidad','Boca de luz / tomacorriente','u'],['Plomería y gas','Instalación sanitaria','gl'],['Plomería y gas','Instalación de gas','gl'],['Pintura','Pintura interior (2 manos)','m²'],['Pintura','Pintura exterior','m²'],['Carpintería','Colocación de aberturas','u'],['Herrería','Reja / portón','u'],['Mano de obra','Mano de obra oficial','jornal'],['Mano de obra','Mano de obra ayudante','jornal'],['Materiales','Cemento (bolsa 50 kg)','bolsa'],['Materiales','Arena / piedra / cal','m³'],['Materiales','Hierro del 8 / del 10','kg'],['Alquiler de equipos','Alquiler de andamios / mezcladora','día'],['Flete y volquetes','Volquete / retiro de escombros','viaje']];
+const MSG=`Hola {cliente}, ¿cómo estás? 👋
+Te escribimos de *MF Construcciones*.
+
+Te enviamos el presupuesto N° {numero} correspondiente a: {obra}.
+
+💰 Total: {total}
+⏱ Plazo estimado: {plazo}
+📅 Válido por {validez} días
+
+En el PDF adjunto está el detalle completo de rubros, cantidades y precios. Cualquier duda o ajuste que quieras hacer, avisanos y lo vemos sin compromiso.
+
+Saludos,
+{contacto}
+MF Construcciones`;
+const today=()=>new Date().toISOString().slice(0,10);
+const DEF=()=>({num:1,fecha:today(),validez:15,cliente:'',tel:'',obra:'',dir:'',items:[],desc:0,gg:0,iva:0,anticipo:50,plazo:'A coordinar',pago:'Anticipo para el inicio de la obra y saldo contra avance / entrega final. Efectivo o transferencia bancaria.',obs:'Los precios corresponden a los trabajos detallados. Todo trabajo adicional se presupuestará por separado. Los materiales no detallados quedan a cargo del cliente.',emp:{contacto:'',tel:'',mail:'',cuit:'',dir:''},msg:MSG});
+let S=DEF(),uid=0;
+try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(o)S={...S,...o,emp:{...S.emp,...(o.emp||{})}}}catch(e){}
+S.items.forEach(i=>i.id=++uid);
+if(/\{anticipo\}|\{saldo\}/.test(S.msg))S.msg=MSG;S.items=S.items.filter(i=>i.desc||i.qty||i.price);if(!S.items.length)S.items.push({id:++uid,desc:'',unit:'m²',qty:0,price:0});
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2800)};
+const getp=k=>k.split('.').reduce((a,p)=>a[p],S);
+const setp=(k,v)=>{const p=k.split('.'),l=p.pop();p.reduce((a,q)=>a[q],S)[l]=v};
+
+function calc(){return{tot:S.items.reduce((a,i)=>a+i.qty*i.price,0)}}
+const det=i=>i.qty&&i.price?i.qty+' '+i.unit+' × '+fmt(i.price)+' / '+i.unit:'';
+const numStr=()=>String(S.num).padStart(4,'0');
+const dmy=s=>s?s.split('-').reverse().join('/'):'';
+function msgText(){const c=calc();const v={cliente:S.cliente||'',numero:numStr(),obra:S.obra||'tu obra',total:fmt(c.tot),validez:S.validez,plazo:S.plazo||'a coordinar',contacto:S.emp.contacto||''};
+ return S.msg.replace(/\{(\w+)\}/g,(m,k)=>k in v?v[k]:m).replace(/Hola ,/,'Hola,').replace(/\n{3,}/g,'\n\n').trim()}
+function waNum(t){let d=(t||'').replace(/\D/g,'').replace(/^00/,'').replace(/^0/,'');if(d.startsWith('54')){if(d.length===12)d='549'+d.slice(2);return d.length>=12?d:''}
+ const m=d.match(/^(\d{2,4})15(\d{6,8})$/);if(m&&m[1].length+m[2].length===10)d=m[1]+m[2];return d.length===10?'549'+d:''}
+function update(){const c=calc();
+ $('#r-tot').textContent=fmt(c.tot);
+ const m=msgText();$('#prev').textContent=m;const n=waNum(S.tel),a=$('#wab');
+ a.href=n?'https://wa.me/'+n+'?text='+encodeURIComponent(m):'#';a.classList.toggle('off',!n)}
+
+function renderItems(){
+ $('#list').innerHTML=S.items.length?S.items.map((it,i)=>`<div class="row" data-i="${i}">
+ <div class="c d" data-l="Concepto"><input list="rubros" data-f="desc" value="${esc(it.desc)}" placeholder="Ej: Revoque grueso"></div>
+ <div class="c" data-l="Medida"><input type="number" min="0" step="any" inputmode="decimal" data-f="qty" value="${it.qty||''}" placeholder="0"></div>
+ <div class="c" data-l="Unidad"><select data-f="unit">${UN.map(u=>`<option${u===it.unit?' selected':''}>${u}</option>`).join('')}</select></div>
+ <div class="c" data-l="Precio por unidad ($)"><input type="number" min="0" step="any" inputmode="decimal" data-f="price" value="${it.price||''}" placeholder="0"></div>
+ <div class="c sub" data-l="Subtotal"><span id="s${it.id}">${fmt(it.qty*it.price)}</span><small id="t${it.id}">${det(it)}</small></div>
+ <button class="x" data-del="${i}" title="Quitar">×</button></div>`).join(''):'<div class="empty">Todavía no cargaste conceptos. Tocá “Agregar otro concepto”.</div>'}
+const addItem=()=>{S.items.push({id:++uid,desc:'',unit:'m²',qty:0,price:0});renderItems();update();save();document.querySelector('#list .row:last-child input')?.focus()};
+
+$('#list').addEventListener('input',e=>{const r=e.target.closest('.row');if(!r)return;const it=S.items[r.dataset.i],f=e.target.dataset.f;
+ it[f]=(f==='qty'||f==='price')?(parseFloat(e.target.value)||0):e.target.value;
+ $('#s'+it.id).textContent=fmt(it.qty*it.price);$('#t'+it.id).textContent=det(it);update();save()});
+$('#list').addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(b){S.items.splice(+b.dataset.del,1);renderItems();update();save()}});
+$('#addb').onclick=()=>addItem();
+$('#rubros').innerHTML=PRE.map(p=>`<option value="${p[1].toUpperCase()}">`).join('');
+
+function bind(){document.querySelectorAll('[data-k]').forEach(el=>{el.value=getp(el.dataset.k)??''})}
+document.addEventListener('input',e=>{const k=e.target.dataset?.k;if(!k)return;setp(k,'n' in e.target.dataset?(parseFloat(e.target.value)||0):e.target.value);update();save()});
+
+$('#cpb').onclick=async()=>{try{await navigator.clipboard.writeText(msgText());toast('Mensaje copiado')}catch(e){toast('No se pudo copiar: seleccioná el texto de la vista previa')}};
+$('#wab').onclick=e=>{if(!waNum(S.tel)){e.preventDefault();toast('Ingresá el WhatsApp del cliente (código de área + número)')}};
+let armed=0;$('#newb').onclick=function(){if(!armed){armed=1;this.textContent='¿Seguro? Tocá de nuevo para borrar todo';setTimeout(()=>{armed=0;this.textContent='Nuevo presupuesto'},3500);return}
+ armed=0;this.textContent='Nuevo presupuesto';const n=S.num+1,e=S.emp,m=S.msg,p=S.pago,o=S.obs,ant=S.anticipo,iva=S.iva,v=S.validez;S={...DEF(),num:n,emp:e,msg:m,pago:p,obs:o,anticipo:ant,iva,validez:v};S.items.push({id:++uid,desc:'',unit:'m²',qty:0,price:0});bind();renderItems();update();save();toast('Presupuesto nuevo listo')};
+
+async function pdf(){
+ if(!S.items.some(i=>i.qty&&i.price)){toast('Cargá al menos un concepto con medida y precio');return}
+ if(!window.jspdf){toast('No cargó el generador de PDF. Revisá tu conexión.');return}
+ const {jsPDF}=window.jspdf,doc=new jsPDF({unit:'mm',format:'a4'}),W=210,M=14,c=calc(),e=S.emp;
+ doc.setFillColor(27,34,48);doc.rect(0,0,W,38,'F');doc.setFillColor(245,158,11);doc.rect(0,38,W,2.5,'F');
+ doc.setTextColor(255);doc.setFont('helvetica','bold');doc.setFontSize(21);doc.text('MF CONSTRUCCIONES',M,16);
+ doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(190,198,210);
+ [e.cuit&&'CUIT: '+e.cuit,e.dir,[e.tel,e.mail].filter(Boolean).join('  |  ')].filter(Boolean).forEach((t,i)=>doc.text(t,M,23+i*4.5));
+ doc.setTextColor(245,158,11);doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('PRESUPUESTO',W-M,15,{align:'right'});
+ doc.setTextColor(255);doc.setFontSize(10);doc.text('N° '+numStr(),W-M,22,{align:'right'});
+ doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(190,198,210);
+ doc.text('Fecha: '+dmy(S.fecha),W-M,27.5,{align:'right'});doc.text('Validez: '+S.validez+' días',W-M,32,{align:'right'});
+ let y=50;doc.setTextColor(120,128,140);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('PARA',M,y);doc.text('OBRA',W/2,y);
+ doc.setTextColor(20,24,33);doc.setFontSize(11);doc.text(S.cliente||'-',M,y+5.5);
+ doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text(doc.splitTextToSize(S.obra||'-',W/2-M),W/2,y+5.5);
+ const dl=doc.splitTextToSize(S.dir||'',W/2-M-4);doc.text(dl,W/2,y+10.5+(S.obra.length>45?4:0));
+ const body=S.items.filter(i=>i.desc||i.qty||i.price).map(i=>[(i.desc||'-').toUpperCase(),String(i.qty).replace('.',',')+' '+i.unit,fmt(i.price)+' / '+i.unit,fmt(i.qty*i.price)]);
+ doc.autoTable({startY:y+22,head:[['Concepto','Medida','Precio por unidad','Subtotal']],body,theme:'striped',margin:{left:M,right:M},
+  styles:{fontSize:9,cellPadding:2.4,textColor:[30,34,44]},headStyles:{fillColor:[27,34,48],textColor:255},alternateRowStyles:{fillColor:[250,250,251]},
+  columnStyles:{1:{halign:'right',cellWidth:28},2:{halign:'right',cellWidth:40},3:{halign:'right',cellWidth:34,fontStyle:'bold'}}});
+ const rows=[['TOTAL',fmt(c.tot)]];
+ doc.autoTable({startY:doc.lastAutoTable.finalY+4,body:rows,theme:'plain',margin:{left:W-M-95,right:M},styles:{fontSize:9.5,cellPadding:2},
+  columnStyles:{0:{cellWidth:55},1:{halign:'right',fontStyle:'bold'}},
+  didParseCell:d=>{if(d.row.index===rows.length-1){d.cell.styles.fillColor=[245,158,11];d.cell.styles.textColor=[28,19,0];d.cell.styles.fontSize=12;d.cell.styles.fontStyle='bold'}}});
+ y=doc.lastAutoTable.finalY+8;
+ const block=(t,x)=>{const L=doc.splitTextToSize(x,W-2*M);if(y+8+L.length*4.2>280){doc.addPage();y=18}
+  doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(122,75,0);doc.text(t.toUpperCase(),M,y);doc.setFont('helvetica','normal');doc.setTextColor(50,55,66);doc.text(L,M,y+5);y+=8+L.length*4.2};
+ if(S.pago)block('Forma de pago',S.pago);
+ if(S.plazo)block('Plazo de obra',S.plazo);
+ if(S.obs)block('Observaciones',S.obs);
+ block('Validez','Este presupuesto es válido hasta el '+dmy(new Date(new Date(S.fecha+'T12:00:00').getTime()+S.validez*864e5).toISOString().slice(0,10))+'.');
+ if(y>240){doc.addPage();y=18}y=Math.max(y+16,255);doc.setDrawColor(150);doc.line(M,y,M+65,y);doc.line(W-M-65,y,W-M,y);
+ doc.setFontSize(8);doc.setTextColor(110);doc.text('MF Construcciones'+(e.contacto?' - '+e.contacto:''),M,y+4);doc.text('Conformidad del cliente',W-M-65,y+4);
+ const n=doc.getNumberOfPages();for(let i=1;i<=n;i++){doc.setPage(i);doc.setFontSize(8);doc.setTextColor(140);doc.text('MF Construcciones · Presupuesto N° '+numStr()+' · Página '+i+' de '+n,W/2,289,{align:'center'})}
+ const buf=doc.output('arraybuffer'),name='Presupuesto-'+numStr()+(S.cliente?'-'+S.cliente.replace(/[^\w]+/g,'_'):'')+'.pdf';
+ try{const dls=window.claude?await window.claude.use('downloads'):null;if(!dls){toast('La descarga no está disponible en esta vista. Abrí el artefacto en claude.ai.');return}
+  await dls.save({filename:name,data:buf});toast('PDF listo ✔ Ahora enviá por WhatsApp y adjuntalo')}
+ catch(err){if(err&&err.code!=='declined')toast('No se pudo descargar el PDF ('+(err.code||'error')+')')}}
+$('#pdfb').onclick=pdf;
+bind();renderItems();update();
+</script>
+</body>
+</html>
